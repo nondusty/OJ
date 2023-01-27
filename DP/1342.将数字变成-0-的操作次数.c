@@ -10,7 +10,7 @@
 int numberOfSteps(int num){
     const int MAX = 1000000 + 1;
     int* f = malloc(sizeof(int) * MAX);
-    memset(f, 0, MAX);
+    memset(f, 0, sizeof(int) * MAX);
     for(int i = 1; i <= num; i++){
         if(i % 2 == 1)
             f[i] = f[i - 1] + 1;

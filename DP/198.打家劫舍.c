@@ -12,7 +12,7 @@ int max(int a, int b){
 int rob(int* nums, int numsSize){
     const int MAX = 101;
     int* f = malloc(sizeof(int) * MAX);
-    memset(f, 0, MAX);
+    memset(f, 0, sizeof(int) * MAX);
     f[0] = nums[0];
     if(numsSize > 1)
         f[1] = max(nums[0], nums[1]);

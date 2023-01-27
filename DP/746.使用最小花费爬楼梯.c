@@ -12,7 +12,7 @@ int min(int a, int b){
 int minCostClimbingStairs(int* cost, int costSize){
     const int MAX = 1001;
     int*m = malloc(sizeof(int) * MAX);
-    memset(m, 0, MAX);
+    memset(m, 0, sizeof(int) * MAX);
     m[0] = m[1] = 0;
     for(int i = 2; i <= costSize; i++)
         m[i] = min(m[i - 1] + cost[i - 1], m[i - 2] + cost[i - 2]);
