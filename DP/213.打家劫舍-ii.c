@@ -18,7 +18,6 @@ int **arr2(int row, int col, int val){
         for(int j = 0; j < col; j++)
             a[i][j] = val;
     return a;
-    
 }
 
 int rob(int* nums, int numsSize){
