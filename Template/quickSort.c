@@ -1,5 +1,6 @@
 #include<stdio.h>
-#include <stdlib.h>
+#include<stdlib.h>
+#include<string.h>
 void quickSort(int* arr, int l, int r){
     if(l >= r) return;
     int x = arr[l], i = l - 1, j = r + 1;
@@ -18,6 +19,7 @@ void quickSort(int* arr, int l, int r){
 int main(){
     const int MAX = 100001;
     int *arr = (int*)malloc(sizeof(int) * MAX);
+    memset(arr, 0, sizeof(int) * MAX);
     int n;
     scanf("%d", &n);
     for(int i = 0; i < n; i++) scanf("%d", &arr[i]);

@@ -64,11 +64,71 @@ int main(){
 }
 ```
 
-30:49
+## 4、归并排序
+
+```c
+#include<stdio.h>
+#include <stdlib.h>
+const int MAX = 100001;
+void mergeSort(int* arr, int l, int r){
+    int *tmp = (int*)malloc(sizeof(int) * MAX);
+    if(l >= r) return;
+    int mid = (l + r) / 2;
+    mergeSort(arr, l, mid), mergeSort(arr, mid + 1, r);
+    int k = 0, i = l, j = mid + 1;
+    while (i <= mid && j <= r)
+        if(arr[i] <= arr[j]) tmp[k++] = arr[i++];
+        else tmp[k++] = arr[j++];
+    while(i <= mid) tmp[k++] = arr[i++];
+    while(j <= r) tmp[k++] = arr[j++];
+    for(i = l, j = 0; i <= r; i++, j++) arr[i] = tmp[j];
+    
+}
+int main(){
+    int *arr = (int*)malloc(sizeof(int) * MAX);
+    int n;
+    scanf("%d", &n);
+    for(int i = 0; i < n; i++) scanf("%d", &arr[i]);
+    mergeSort(arr, 0, n - 1);
+    for(int i = 0; i < n; i++) printf("%d ", arr[i]);
+}
+```
+
+## 5、二分查找
+
+```C
+int bSearch_1(int l, int r){
+    while(l < r){
+        int mid = (l + r + 1) >> 1;
+        /** check(mid)
+         * true     [mid,       r] → ∵ 避免死循环[l, r] ∴  mid = (l + r + 1) / 2
+         * false    [l  , mid - 1]
+        */
+        if(check(mid)) l == mid; // l == mid → 偏右; 否则 l + r / 2 == l → 死循环
+        else r = mid - 1;
+    }
+    return l;
+}
+
+int bSearch_2(int l, int r){
+    while(l < r){
+        int mid = (l + r) >> 1;
+        /** check(mid)
+         * true     [l      , mid]
+         * false    [mid + 1,   r]
+        */
+        if(check(mid)) r == mid; // r == mid → 偏左
+        else l = mid + 1;
+    }
+    return l;
+}
+```
+
+
 
 # LeetCode
 
-| 题号 |     完成     |
+| 题号 |     状况     |
 | :--: | :----------: |
 |  70  |      ✔       |
 | 1342 |      ✔       |
@@ -81,3 +141,18 @@ int main(){
 | 139  |      ✔       |
 | 1869 |      ✔       |
 | 724  |      ✔       |
+
+# AcWing
+
+| 题号 | 状况 |
+| :--: | :--: |
+| 789  |  ✔   |
+|      |      |
+|      |      |
+|      |      |
+|      |      |
+|      |      |
+|      |      |
+|      |      |
+|      |      |
+
