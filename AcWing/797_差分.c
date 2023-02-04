@@ -22,7 +22,7 @@ int main(){
         scanf("%d %d %d", &l, &r, &c);
         insert(tar, l, r, c);
     }
-    for(int i = 1; i <= n; i++) tar[i] += tar[i - 1];
+    for(int i = 1; i <= n; i++) tar[i] += tar[i - 1];   //最后一次统一改变 → 降低时间复杂度
     for(int i = 1; i <= n; i++) printf("%d ", tar[i]);
 }
 /**
@@ -48,9 +48,9 @@ int main(){
 输入样例
 6 3
 1 2 2 1 2 1
-1 3 1
-3 5 1
-1 6 1
+1 3 1      → 2 3 3 1 2 1
+3 5 1      → 2 3 4 2 3 1
+1 6 1      → 3 4 5 3 4 2
 
 输出样例
 3 4 5 3 4 2

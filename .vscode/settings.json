@@ -1,6 +1,10 @@
 {
     "files.associations": {
+        "*.cjson": "jsonc",
+        "*.wxss": "css",
+        "*.wxs": "javascript",
         "iostream": "cpp",
-        "string.h": "c"
+        "string.h": "c",
+        "801_二进制中1的个数": "c"
     }
 }
