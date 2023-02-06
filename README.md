@@ -151,6 +151,26 @@ int bSearch_2(int l, int r){
 }
 ```
 
+## 6、C语言读取字符串
+
+```C
+op = (char*)malloc(sizeof(char) * 3), memset(len, 0, sizeof(char)*3);
+scanf("%s", op);
+int a, b;
+if (op[0] == 'C') {
+    scanf("%d %d", &a, &b);
+    if (!check(a, b))
+        merge(a, b);
+}
+else if (op[0] == 'Q' && op[1] == '1') {    //查询是否在同一个集合
+    scanf("%d %d", &a, &b);
+    check(a, b) ? printf("Yes\n") : printf("No\n");
+}else if(op[0] == 'Q' && op[1] == '2') {                   //查询一个集合有多少个元素
+    scanf("%d", &a);
+    printf("%d\n", len[find(a)]);
+}
+```
+
 
 
 # LeetCode
