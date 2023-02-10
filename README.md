@@ -171,6 +171,75 @@ else if (op[0] == 'Q' && op[1] == '1') {    //查询是否在同一个集合
 }
 ```
 
+## 7、C语言数组模拟哈希拉链法
+
+```c
+int *val, *nex, *head;  // val:idx结点具体值、nex:idx下一个值、head: 对应Key的拉链头
+val = (int*)malloc(sizeof(int) * N), memset(val, 0, sizeof(int) * N);
+nex = (int*)malloc(sizeof(int) * N), memset(nex, 0, sizeof(int) * N);
+head = (int*)malloc(sizeof(int) * N), memset(head, -1, sizeof(int) * N);
+void insert(int x){
+    int k = (x % N + N) % N;
+    val[idx] = x;
+    nex[idx] = head[k];
+    head[k] = idx;
+    idx ++ ;
+}
+```
+
+## 8、C语言特性 Const
+
+`const` 只能说明仅读，不代表声明常数。因此不可以用来作为数组变量
+
+==注意==：`define` 前加`＃`后去`;`
+
+```c
+//错误示例：
+int array_length = 100;
+#define MAX_LENGTH array_length 
+int array_wrong[array_length];			//由于数组长度array_length为变量，因此错误
+int array_wrong[MAX_LENGTH];			//由于数组长度MAX_LENGTH为变量array_length，因此错误
+
+//正确示例
+#define MAX_LENGTH 100
+int array_success[MAX_LENGTH];		//由于数组长度MAX_LENGTH为常量100，因此正确
+```
+
+## 9、字符串哈希
+
+```c
+#include<stdio.h>
+#include<stdlib.h>
+typedef unsigned long long ULL;
+const int P = 131;                        // 这里P取131 / 13331 为经验值，可以使得不用考虑冲突的情况
+#define N 100010
+char str[N];                              // str这里是输入的字符串，同时使用ASCII值
+ULL hash[N], pM[N];                       // hash为前n个字母的哈希值，pM为p的n次幂
+// 求l-r区间内的哈希值
+ULL get(int l,int r){
+    return hash[r] - hash[l-1] * pM[r-l+1];
+}
+
+int main(){
+    int n, m;
+    scanf("%d %d %s", &n, &m, str + 1);
+    pM[0] = 1;
+    //求P的n次幂和前n个字符的哈希值
+    for(int i = 1; i <= n; i++){
+        pM[i] = pM[i-1] * P;
+        hash[i] = hash[i-1] * P + str[i]; 
+    }
+    while(m--){
+        int l1,r1,l2,r2;
+        scanf("%d %d %d %d", &l1, &r1, &l2, &r2);
+        if(get(l1,r1) == get(l2,r2))
+            puts("Yes");
+        else
+            puts("No");
+    }
+}
+```
+
 
 
 # LeetCode
