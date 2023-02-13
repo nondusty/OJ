@@ -6,6 +6,7 @@
         "iostream": "cpp",
         "string.h": "c",
         "801_二进制中1的个数": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "random": "c"
     }
 }

@@ -1,22 +1,33 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-static int cmp(const void *pa, const void *pb) {
-    return *(int *)pa - *(int *)pb;
+#define MAX 10
+#define inf 0x3f3f3f3f
+
+int **arr2(int row, int col, int val){
+    int** a = (int **)malloc(sizeof(int *) * row);
+    for(int i = 0; i < row; i++)
+        a[i] = (int *)malloc(sizeof(int) * col);
+    for(int i = 0; i < row; i++)
+        for(int j = 0; j < col; j++)
+            a[i][j] = val;
+    return a;
 }
-
 int main(){
-    int MAX = 100;
-    int* f = (int*)malloc(sizeof(int) * MAX);
-    memset(f, 0, sizeof(int)*MAX);
+    int** f = arr2(MAX, MAX, 0);
+    for(int i = 0; i < MAX; i++){
+        for(int j = 0; j < MAX; j++)
+            printf("%d ", f[i][j]);
+        puts("");
+    }
 
-    int len;
-    scanf("%d", &len);
+    puts("");
 
-    for(int i = 0; i < len; i++)
-        scanf("%d", &f[i]);
-
-    qsort(f, len, sizeof(int), cmp);
-    for(int i = 0; i < len; i++)
-        printf("%d ", f[i]);
+    int g[MAX][MAX];
+    memset(g, inf, sizeof g);
+    for(int i = 0; i < MAX; i++){
+        for(int j = 0; j < MAX; j++)
+            printf("%d ", g[i][j]);
+        puts("");
+    }
 }
